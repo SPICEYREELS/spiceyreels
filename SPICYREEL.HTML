@@ -1,0 +1,604 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpicyReels</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, sans-serif;
+      background: #000;
+      color: white;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(135deg, #ff006e, #8b00ff, #ff0054);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(255, 0, 110, 0.3);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chilli-logo {
+      font-size: 34px;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    .site-name {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(45deg, #fff, #ffb3d9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .video-container {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .video-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - 60px);
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+    }
+
+    .video-player {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: none;
+    }
+
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a0033, #330033, #4d0052);
+      color: #ff6ec7;
+      font-size: 24px;
+      font-weight: 600;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .tap-to-play {
+      font-size: 18px;
+      opacity: 0.8;
+      animation: fadeIn 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0.5; }
+      to { opacity: 1; }
+    }
+
+    .video-info {
+      position: absolute;
+      bottom: 80px;
+      left: 20px;
+      right: 80px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+      z-index: 10;
+    }
+
+    .video-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .video-description {
+      font-size: 16px;
+      color: #ffb3d9;
+    }
+
+    .side-actions {
+      position: absolute;
+      right: 15px;
+      bottom: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      z-index: 10;
+    }
+
+    .action-btn {
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .action-btn:active {
+      transform: scale(0.9);
+    }
+
+    .action-icon {
+      font-size: 28px;
+    }
+
+    .action-count {
+      font-size: 12px;
+      margin-top: 2px;
+      font-weight: 600;
+    }
+
+    .like-btn.liked .action-icon {
+      color: #ff0054;
+    }
+    
+    .unmute-btn {
+      position: absolute;
+      top: 20px;
+      right: 15px;
+      z-index: 10;
+      font-size: 28px;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(5px);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+
+    .ad-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .ad-content {
+      background: linear-gradient(135deg, #1a0033, #330033);
+      padding: 20px;
+      border-radius: 20px;
+      color: #ff6ec7;
+      font-size: 20px;
+      text-align: center;
+      border: 3px solid #ff006e;
+      box-shadow: 0 0 30px rgba(255, 0, 110, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 90%;
+      max-width: 350px;
+    }
+
+    .ad-image-link {
+        display: block;
+        margin-bottom: 15px;
+        border-radius: 15px;
+        overflow: hidden;
+        border: 2px solid #ff006e;
+    }
+    
+    .ad-image {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .ad-timer {
+      font-size: 40px;
+      font-weight: 900;
+      color: #fff;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo-container">
+      <div class="chilli-logo">🌶️</div>
+      <div class="site-name">SPICY REELS</div>
+    </div>
+  </div>
+
+  <div class="video-container" id="videoContainer"></div>
+
+  <div class="ad-modal" id="adModal">
+    <div class="ad-content">
+      <div>click here</div>
+      
+      <a href="" target="_blank" class="ad-image-link" id="adLink">
+        <img src="" alt="Model Ad" class="ad-image" id="adImage">
+      </a>
+      <div class="ad-timer" id="adTimer">10</div>
+      <div>seconds remaining</div>
+    </div>
+  </div>
+
+  <script>
+    let videos = [
+      { title: "1", desc: "Enjoy the hottest short videos online!", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_NICOLETE_jjjyww.mp4" },
+      { title: "2", desc: "Can you top this?", url :"https://res.cloudinary.com/dxdhppkto/video/upload/v1760562608/CAKE_pswwv1.mp4" },
+      { title: "3", desc: "sexy", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/ROMI_hnqdco.mp4" },
+      { title: "4", desc: "sexy", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/AUGUT_cjwtmw.mp4" },
+      { title: "5", desc: "sexy", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/bridgette_mt68sj.mp4" },
+      { title: "6", desc: "sexy", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/alewx_pzrcng.mp4" },
+      { title: "7", desc: "sexy", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/ava_adams_evpk88.mp4" },
+      { title: "8", desc: "sexy", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ABELA_r2xzbd.mp4" },
+      { title: "9", desc: "sexy", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_RACHEL_fveoe5.mp4" },
+      { title: "10", desc: "BIG ASS", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ABELLA_a1tjyy.mp4" },
+      { title: "11", desc: "CAKE", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_CAKE2_afonnq.mp4" },
+      { title: "12", desc: "HOTTT", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ANISTON_pqhcqg.mp4" },
+      { title: "13", desc: "SEXY", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_LELA_B_v9cetc.mp4" },
+      { title: "14", desc: "HOT", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ANGELY_f1guyb.mp4" },
+      { title: "15", desc: "BIG ASS", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_BD_nbybfb.mp4" },
+      { title: "16", desc: "HOT", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_RUTH_h1d7se.mp4" },
+      { title: "17", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_JORDI_fssi71.mp4" },
+      { title: "18", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_BD2_wwwxac.mp4" },
+      { title: "19", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_PETA_qat5sa.mp4" },
+      { title: "20", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_BLONDIE_eaxygx.mp4" },
+      { title: "21", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_SCISSOR_dqtv77.mp4" },
+      { title: "22", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_NICOFERERA_rqgje7.mp4" },
+      { title: "23", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_R2_beftlv.mp4" },
+      { title: "24", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ANGELLUNA_nntqvk.mp4" },
+      { title: "25", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_YELLOWYOG_mdh6fu.mp4" },
+      { title: "26", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ANGWHIT_l91mz0.mp4" },
+    ];
+    
+    const ads = [
+        { 
+            link: "https://onlyfans.com/fitandannika",
+            imageSrc: "https://res.cloudinary.com/dxdhppkto/image/upload/v1760636530/annika_xlonxa.png"
+        },
+        { 
+            link: "https://onlyfans.com/alkh1mova",
+            imageSrc: "https://res.cloudinary.com/dxdhppkto/image/upload/v1760698421/ALISHA_zfyl1h.png"
+        },
+        { 
+            link: "https://onlyfans.com/evie_rouge/c21",
+            imageSrc: "https://res.cloudinary.com/dxdhppkto/image/upload/v1760698422/EVE_venrwj.png"
+        }
+    ];
+    
+    let adCountdownInterval;
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    videos = shuffle(videos);
+    videos.forEach(video => {
+      video.id = video.url;
+    });
+
+    let currentIndex = 0;
+    let hasStarted = false;
+    let adShowing = false;
+    let playedSet = new Set();
+    let likes = {};
+    let userLiked = new Set();
+    let isScrolling = false;
+    let scrollTimeout;
+
+    let isGloballyMuted = true;
+
+    function renderVideos() {
+      const container = document.getElementById("videoContainer");
+      container.innerHTML = "";
+      
+      videos.forEach((video, index) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "video-wrapper";
+        wrapper.dataset.id = video.id;
+        wrapper.dataset.index = index;
+        wrapper.dataset.url = video.url;
+
+        wrapper.innerHTML = `
+          <div class="video-placeholder">
+            <div>${video.title}</div>
+            <div class="tap-to-play">👆 Tap to play</div>
+          </div>
+          <div class="unmute-btn">🔇</div>
+          <div class="video-info">
+            <div class="video-title">${video.title}</div>
+            <div class="video-description">${video.desc}</div>
+          </div>
+          <div class="side-actions">
+            <div class="action-btn like-btn" data-id="${video.id}">
+              <div class="action-icon">❤️</div>
+              <div class="action-count">${likes[video.id] || 0}</div>
+            </div>
+          </div>
+          ${index === 0 ? '<div class="scroll-indicator">↓ Scroll for more</div>' : ''}
+        `;
+
+        container.appendChild(wrapper);
+      });
+
+      setupInteractions();
+      setupScrollDetection();
+    }
+
+    function setupInteractions() {
+      document.querySelectorAll('.video-wrapper').forEach(wrapper => {
+        wrapper.addEventListener('click', (e) => {
+          if (!e.target.closest('.action-btn') && !e.target.closest('.unmute-btn') && !isLoaded(wrapper) && !adShowing) {
+            hasStarted = true;
+            loadVideo(wrapper);
+            wrapper.querySelector('.scroll-indicator')?.remove();
+          }
+        });
+      });
+
+      document.querySelectorAll('.like-btn').forEach(btn => {
+        const id = btn.dataset.id;
+        if (userLiked.has(id)) {
+          btn.classList.add('liked');
+        }
+        
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (userLiked.has(id)) {
+            userLiked.delete(id);
+            likes[id] = Math.max(0, (likes[id] || 0) - 1);
+            btn.classList.remove('liked');
+          } else {
+            userLiked.add(id);
+            likes[id] = (likes[id] || 0) + 1;
+            btn.classList.add('liked');
+          }
+          btn.querySelector('.action-count').textContent = likes[id];
+        });
+      });
+
+      document.querySelectorAll('.unmute-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          isGloballyMuted = !isGloballyMuted;
+          const currentWrapper = btn.closest('.video-wrapper');
+          const currentVideoEl = currentWrapper.querySelector('video');
+          if (currentVideoEl) {
+            currentVideoEl.muted = isGloballyMuted;
+          }
+          document.querySelectorAll('.unmute-btn').forEach(icon => {
+            icon.textContent = isGloballyMuted ? '🔇' : '🔊';
+          });
+        });
+      });
+    }
+
+    function setupScrollDetection() {
+      const container = document.getElementById('videoContainer');
+      container.addEventListener('scroll', () => {
+        isScrolling = true;
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          isScrolling = false;
+          handleScrollEnd();
+        }, 150);
+      });
+    }
+
+    function handleScrollEnd() {
+      const container = document.getElementById('videoContainer');
+      const wrappers = document.querySelectorAll('.video-wrapper');
+      
+      let closestWrapper = null;
+      let minDistance = Infinity;
+      
+      wrappers.forEach(wrapper => {
+        const rect = wrapper.getBoundingClientRect();
+        const distance = Math.abs(rect.top - 60);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestWrapper = wrapper;
+        }
+      });
+
+      if (closestWrapper) {
+        const newIndex = parseInt(closestWrapper.dataset.index);
+        
+        if (newIndex !== currentIndex) {
+          const prevWrapper = wrappers[currentIndex];
+          if (prevWrapper && isLoaded(prevWrapper)) {
+            unloadVideo(prevWrapper);
+            const id = prevWrapper.dataset.id;
+            if (!playedSet.has(id)) {
+              playedSet.add(id);
+              
+              // MODIFIED: Changed the number from 5 to 3
+              if (playedSet.size > 0 && playedSet.size % 3 === 0) {
+                // MODIFIED: Changed the number from 5 to 3
+                const adTriggerCount = playedSet.size / 3;
+                const adIndexToShow = (adTriggerCount - 1) % ads.length;
+                showAd(adIndexToShow);
+                return;
+              }
+            }
+          }
+          
+          currentIndex = newIndex;
+          
+          if (hasStarted && !adShowing && !isLoaded(closestWrapper)) {
+            loadVideo(closestWrapper);
+          }
+        }
+      }
+    }
+
+    function isLoaded(wrapper) {
+      return !!wrapper.querySelector('video');
+    }
+
+    function loadVideo(wrapper) {
+      const url = wrapper.dataset.url;
+      if (!url) return;
+      
+      const videoEl = document.createElement('video');
+      videoEl.src = url;
+      videoEl.className = 'video-player';
+      videoEl.autoplay = true;
+      videoEl.muted = isGloballyMuted;
+      videoEl.loop = true;
+      videoEl.playsInline = true;
+      
+      wrapper.querySelector('.video-placeholder')?.remove();
+      wrapper.insertBefore(videoEl, wrapper.querySelector('.video-info'));
+
+      const unmuteBtn = wrapper.querySelector('.unmute-btn');
+      if (unmuteBtn) {
+        unmuteBtn.textContent = isGloballyMuted ? '🔇' : '🔊';
+      }
+      
+      videoEl.play().catch(error => {
+        console.error("Video playback failed:", error);
+      });
+    }
+
+    function unloadVideo(wrapper) {
+      const videoEl = wrapper.querySelector('video');
+      if (videoEl) {
+        videoEl.pause();
+        videoEl.removeAttribute('src');
+        videoEl.load();
+        videoEl.remove();
+      }
+      if (!wrapper.querySelector('.video-placeholder')) {
+        const video = videos.find(v => v.id === wrapper.dataset.id);
+        const placeholder = document.createElement('div');
+        placeholder.className = 'video-placeholder';
+        placeholder.innerHTML = `
+          <div>${video.title}</div>
+          <div class="tap-to-play">👆 Tap to play</div>
+        `;
+        wrapper.insertBefore(placeholder, wrapper.querySelector('.video-info'));
+      }
+    }
+
+    function showAd(adIndex) {
+        adShowing = true;
+        const adToShow = ads[adIndex];
+
+        const adModal = document.getElementById('adModal');
+        const adLink = document.getElementById('adLink');
+        const adImage = document.getElementById('adImage');
+        const timerEl = document.getElementById('adTimer');
+        
+        adLink.href = adToShow.link;
+        adImage.src = adToShow.imageSrc;
+        
+        adModal.style.display = 'flex';
+
+        let timeLeft = 10;
+        timerEl.textContent = timeLeft;
+
+        adCountdownInterval = setInterval(() => {
+            timeLeft--;
+            timerEl.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                hideAd();
+            }
+        }, 1000);
+    }
+
+    function hideAd() {
+        clearInterval(adCountdownInterval);
+
+        adShowing = false;
+        const adModal = document.getElementById('adModal');
+        adModal.style.display = 'none';
+
+        const wrappers = document.querySelectorAll('.video-wrapper');
+        const currentWrapper = wrappers[currentIndex];
+        if (currentWrapper && !isLoaded(currentWrapper)) {
+            loadVideo(currentWrapper);
+        }
+    }
+
+    renderVideos();
+  </script>
+</body>
+</html>
