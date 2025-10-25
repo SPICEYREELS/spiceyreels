@@ -32,11 +32,11 @@
       justify-content: center;
       z-index: 1000;
       box-shadow: 0 4px 12px rgba(255, 0, 110, 0.3);
-      transition: display 0.3s ease; /* Smooth transition for display changes */
+      transition: display 0.3s ease;
     }
 
     .header.hidden {
-      display: none; /* Hide header when class is applied */
+      display: none;
     }
 
     .logo-container {
@@ -82,8 +82,8 @@
     }
 
     .video-container.full-height {
-      top: 0; /* Expand to top when header is hidden */
-      height: 100vh; /* Full viewport height */
+      top: 0;
+      height: 100vh;
     }
 
     .video-container::-webkit-scrollbar {
@@ -103,7 +103,7 @@
     }
 
     .video-wrapper.full-height {
-      height: 100vh; /* Full height when header is hidden */
+      height: 100vh;
     }
 
     .video-player {
@@ -126,6 +126,24 @@
       cursor: pointer;
       flex-direction: column;
       gap: 20px;
+      position: relative;
+    }
+
+    .video-placeholder video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .video-placeholder .title-overlay,
+    .video-placeholder .tap-to-play {
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
     }
 
     .tap-to-play {
@@ -431,12 +449,10 @@
     let onlyFansIndex = 0;
 
     while (orderedVideos.length < videos.length) {
-      // Add 4 numbered reels
       for (let i = 0; i < 4 && numberedIndex < numberedReels.length; i++) {
         orderedVideos.push(numberedReels[numberedIndex]);
         numberedIndex = (numberedIndex + 1) % numberedReels.length;
       }
-      // Add 1 OnlyFans reel
       if (onlyFansIndex < onlyFansReels.length) {
         orderedVideos.push(onlyFansReels[onlyFansIndex]);
         onlyFansIndex = (onlyFansIndex + 1) % onlyFansReels.length;
@@ -469,10 +485,17 @@
         wrapper.dataset.index = index;
         wrapper.dataset.url = video.url;
 
+        // Use video with poster for first frame if header is hidden, else text-only
+        const placeholderContent = isHeaderPermanentlyHidden
+          ? `<video src="${video.url}" poster="${video.url}" preload="metadata" muted></video>
+             <div class="title-overlay">${video.title}</div>
+             <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>`
+          : `<div class="title-overlay">${video.title}</div>
+             <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>`;
+
         wrapper.innerHTML = `
           <div class="video-placeholder">
-            <div>${video.title}</div>
-            <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>
+            ${placeholderContent}
           </div>
           <div class="unmute-btn">🔇</div>
           <div class="video-info">
@@ -496,7 +519,7 @@
             hasStarted = true;
             loadVideo(wrapper);
             wrapper.querySelector('.scroll-indicator')?.remove();
-            // Hide header permanently if this is the first video (index 0)
+            // Hide header permanently and rerender with first-frame placeholders if first video
             if (parseInt(wrapper.dataset.index) === 0 && !isHeaderPermanentlyHidden) {
               const header = document.getElementById('header');
               header.classList.add('hidden');
@@ -504,6 +527,7 @@
               videoContainer.classList.add('full-height');
               document.querySelectorAll('.video-wrapper').forEach(w => w.classList.add('full-height'));
               isHeaderPermanentlyHidden = true;
+              renderVideos(); // Rerender to show first-frame placeholders
             }
           }
         });
@@ -535,7 +559,7 @@
           e.stopPropagation();
           isGloballyMuted = !isGloballyMuted;
           const currentWrapper = btn.closest('.video-wrapper');
-          const currentVideoEl = currentWrapper.querySelector('video');
+          const currentVideoEl = currentWrapper.querySelector('video.video-player');
           if (currentVideoEl) {
             currentVideoEl.muted = isGloballyMuted;
           }
@@ -603,7 +627,7 @@
     }
 
     function isLoaded(wrapper) {
-      return !!wrapper.querySelector('video');
+      return !!wrapper.querySelector('video.video-player');
     }
 
     function loadVideo(wrapper) {
@@ -632,7 +656,7 @@
     }
 
     function unloadVideo(wrapper) {
-      const videoEl = wrapper.querySelector('video');
+      const videoEl = wrapper.querySelector('video.video-player');
       if (videoEl) {
         videoEl.pause();
         videoEl.removeAttribute('src');
@@ -643,10 +667,13 @@
         const video = orderedVideos.find(v => v.id === wrapper.dataset.id);
         const placeholder = document.createElement('div');
         placeholder.className = 'video-placeholder';
-        placeholder.innerHTML = `
-          <div>${video.title}</div>
-          <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>
-        `;
+        const placeholderContent = isHeaderPermanentlyHidden
+          ? `<video src="${video.url}" poster="${video.url}" preload="metadata" muted></video>
+             <div class="title-overlay">${video.title}</div>
+             <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>`
+          : `<div class="title-overlay">${video.title}</div>
+             <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>`;
+        placeholder.innerHTML = placeholderContent;
         wrapper.insertBefore(placeholder, wrapper.querySelector('.video-info'));
       }
     }
@@ -661,7 +688,6 @@
       const timerEl = document.getElementById('adTimer');
       const header = document.getElementById('header');
 
-      // Show header during ad
       if (isHeaderPermanentlyHidden) {
         header.classList.remove('hidden');
       }
@@ -691,7 +717,6 @@
       adModal.style.display = 'none';
 
       const header = document.getElementById('header');
-      // Hide header again after ad if it was permanently hidden
       if (isHeaderPermanentlyHidden) {
         header.classList.add('hidden');
       }
