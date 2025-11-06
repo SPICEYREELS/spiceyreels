@@ -59,6 +59,11 @@
       }
     }
 
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     .site-name {
       font-size: 26px;
       font-weight: 900;
@@ -111,6 +116,22 @@
       height: 100%;
       object-fit: cover;
       border: none;
+    }
+
+    .video-loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      margin-left: -25px; /* -(width/2) */
+      margin-top: -25px;  /* -(height/2) */
+      border: 5px solid rgba(255, 255, 255, 0.2);
+      border-top-color: #ff006e; /* Hot pink theme color */
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      z-index: 11; /* Above video info (10) */
+      display: none; /* Hidden by default */
     }
 
     .video-placeholder {
@@ -375,7 +396,7 @@
       { title: "46", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_AMES_nii3f8.mp4" },
       { title: "47", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ROMY_kjcsvm.mp4" },
       { title: "48", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_LUNA_STAR_a89fbu.mp4" },
-      { title: "49", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_SAVANNA_xnieh9.mp4" },
+      { title: "49", desc: "", url: "httpss://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_SAVANNA_xnieh9.mp4" },
       { title: "50", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_JOON_gv4glx.mp4" },
      { title: "51", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_MONIQUE_vhbihn.mp4" },
      { title: "52", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_NNB_xlunfp.mp4" },
@@ -384,19 +405,19 @@
      { title: "55", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_NNN8_qnhuum.mp4" },
      { title: "56", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_JUAN_v6xfox.mp4" },
     { title: "57", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ROMI_67_es4k2p.mp4" },
-     { title: "58", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ALVUV_b5k3zt.mp4" },
+     { title: "58", desc: "", url: "httpshttps://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ALVUV_b5k3zt.mp4" },
      { title: "59", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_NICOLETE_JHN_v6mxn3.mp4" },
      { title: "60", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_IVY_ch7u6c.mp4" },
      { title: "61", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_bbc4_dfumht.mp4" },
      { title: "62", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_bbc5_saoxh5.mp4" },
     { title: "62", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_markus_rmw4p5.mp4" },
-   { title: "63", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_rrm_mzy3ry.mp4" },
+    { title: "63", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_rrm_mzy3ry.mp4" },
   { title: "64", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_niccy45_xlcnfn.mp4" },
     { title: "65", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_big_assy_lf18wy.mp4" },
     { title: "66", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_cherki_htdhhs.mp4" },
   { title: "67", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_markus_rmw4p5.mp4" },
-   { title: "68", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_jason_crzpcr.mp4" },
-   { title: "69", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_niccyote_rw8lij.mp4" },
+    { title: "68", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_jason_crzpcr.mp4" },
+    { title: "69", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_niccyote_rw8lij.mp4" },
       {
 
         title: "<a href='https://onlyfans.com/riana_brooks' target='_blank' rel='noopener noreferrer'>onlyfans.com/riana_brooks</a>",
@@ -423,7 +444,7 @@
         type: "onlyfans"
       },
       {
-        title: "<a href='https://onlyfans.com/evie_rouge' target='_blank' rel='noopener noreferrer'>onlyfans.com/evie_rouges</a>",
+        title: "<a href='httpss://onlyfans.com/evie_rouge' target='_blank' rel='noopener noreferrer'>onlyfans.com/evie_rouges</a>",
         desc: "This is only a teaser. Check me out",
         url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/onlyevie_rmguao.mp4",
         type: "onlyfans"
@@ -441,7 +462,7 @@
       },
       {
         link: "https://ctwmsg.com/?siteId=cutiesai&pageName=signup&prm[psid]=livingstone&prm[pstool]=650_2&prm[psprogram]=revs&prm[campaign_id]=&subAffId={SUBAFFID}r",
-        imageSrc: "https://res.cloudinary.com/dxdhppkto/image/upload/v1761231603/Solov1_rjgz2j.jpg"
+        imageSrc: "httpss://res.cloudinary.com/dxdhppkto/image/upload/v1761231603/Solov1_rjgz2j.jpg"
       }
     ];
 
@@ -509,12 +530,13 @@
         // Use video with poster for first frame if header is hidden, else text-only
         const placeholderContent = isHeaderPermanentlyHidden
           ? `<video src="${video.url}" poster="${video.url}" preload="metadata" muted></video>
-             <div class="title-overlay">${video.title}</div>
-             <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>`
+                   <div class="title-overlay">${video.title}</div>
+                   <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>`
           : `<div class="title-overlay">${video.title}</div>
-             <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>`;
+                   <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>`;
 
         wrapper.innerHTML = `
+          <div class="video-loader"></div>
           <div class="video-placeholder">
             ${placeholderContent}
           </div>
@@ -603,6 +625,7 @@
       });
     }
 
+    /* --- THIS IS THE UPDATED, CORRECTED FUNCTION --- */
     function handleScrollEnd() {
       const container = document.getElementById('videoContainer');
       const wrappers = document.querySelectorAll('.video-wrapper');
@@ -623,29 +646,45 @@
         const newIndex = parseInt(closestWrapper.dataset.index);
 
         if (newIndex !== currentIndex) {
+          // We are moving to a new video
           const prevWrapper = wrappers[currentIndex];
+
           if (prevWrapper && isLoaded(prevWrapper)) {
-            unloadVideo(prevWrapper);
+            // The video we are leaving was playing
             const id = prevWrapper.dataset.id;
+            
+            // Unload it (this also pauses it)
+            unloadVideo(prevWrapper); 
+            
             if (!playedSet.has(id)) {
               playedSet.add(id);
               if (playedSet.size > 0 && playedSet.size % 3 === 0) {
+                // Ad Trigger!
+                
+                // IMPORTANT: Update index *before* showing ad
+                currentIndex = newIndex; 
+                
                 const adTriggerCount = playedSet.size / 3;
                 const adIndexToShow = (adTriggerCount - 1) % ads.length;
                 showAd(adIndexToShow);
-                return;
+                return; // Stop here. hideAd() will load the new video.
               }
             }
           }
 
+          // --- This is the key ---
+          // Always update the current index *after* checking the previous one.
           currentIndex = newIndex;
 
+          // Load the new video *only if* an ad wasn't just triggered
           if (hasStarted && !adShowing && !isLoaded(closestWrapper)) {
             loadVideo(closestWrapper);
           }
         }
       }
     }
+    /* --- END UPDATED FUNCTION --- */
+
 
     function isLoaded(wrapper) {
       return !!wrapper.querySelector('video.video-player');
@@ -655,6 +694,12 @@
       const url = wrapper.dataset.url;
       if (!url) return;
 
+      const loader = wrapper.querySelector('.video-loader');
+      const placeholder = wrapper.querySelector('.video-placeholder');
+
+      if (loader) loader.style.display = 'block'; // Show loader
+      if (placeholder) placeholder.remove(); // Remove placeholder
+
       const videoEl = document.createElement('video');
       videoEl.src = url;
       videoEl.className = 'video-player';
@@ -663,7 +708,14 @@
       videoEl.loop = true;
       videoEl.playsInline = true;
 
-      wrapper.querySelector('.video-placeholder')?.remove();
+      videoEl.addEventListener('waiting', () => {
+        if (loader) loader.style.display = 'block';
+      });
+
+      videoEl.addEventListener('playing', () => {
+        if (loader) loader.style.display = 'none';
+      });
+
       wrapper.insertBefore(videoEl, wrapper.querySelector('.video-info'));
 
       const unmuteBtn = wrapper.querySelector('.unmute-btn');
@@ -673,13 +725,15 @@
 
       videoEl.play().catch(error => {
         console.error("Video playback failed:", error);
+        if (loader) loader.style.display = 'none'; 
       });
     }
+
 
     function unloadVideo(wrapper) {
       const videoEl = wrapper.querySelector('video.video-player');
       if (videoEl) {
-        videoEl.pause();
+        videoEl.pause(); // <-- This is where the video is stopped
         videoEl.removeAttribute('src');
         videoEl.load();
         videoEl.remove();
@@ -690,16 +744,23 @@
         placeholder.className = 'video-placeholder';
         const placeholderContent = isHeaderPermanentlyHidden
           ? `<video src="${video.url}" poster="${video.url}" preload="metadata" muted></video>
-             <div class="title-overlay">${video.title}</div>
-             <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>`
+                   <div class="title-overlay">${video.title}</div>
+                   <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>`
           : `<div class="title-overlay">${video.title}</div>
-             <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>`;
+                   <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>`;
         placeholder.innerHTML = placeholderContent;
         wrapper.insertBefore(placeholder, wrapper.querySelector('.video-info'));
       }
     }
 
+    function pauseAllVideos() {
+      document.querySelectorAll('video.video-player').forEach(videoEl => {
+        videoEl.pause();
+      });
+    }
+
     function showAd(adIndex) {
+      pauseAllVideos(); // Safety net: pause any videos that might be playing
       adShowing = true;
       const adToShow = ads[adIndex];
 
@@ -743,7 +804,8 @@
       }
 
       const wrappers = document.querySelectorAll('.video-wrapper');
-      const currentWrapper = wrappers[currentIndex];
+      // This works now because currentIndex was correctly updated *before* the ad
+      const currentWrapper = wrappers[currentIndex]; 
       if (currentWrapper && !isLoaded(currentWrapper)) {
         loadVideo(currentWrapper);
       }
@@ -753,6 +815,3 @@
   </script>
 </body>
 </html>
-
-
-
