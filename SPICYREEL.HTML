@@ -10,7 +10,6 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
         Ubuntu, Cantarell, sans-serif;
@@ -19,7 +18,6 @@
       overflow: hidden;
       height: 100vh;
     }
-
     .header {
       position: fixed;
       top: 0;
@@ -34,22 +32,18 @@
       box-shadow: 0 4px 12px rgba(255, 0, 110, 0.3);
       transition: display 0.3s ease;
     }
-
     .header.hidden {
       display: none;
     }
-
     .logo-container {
       display: flex;
       align-items: center;
       gap: 10px;
     }
-
     .chilli-logo {
       font-size: 34px;
       animation: pulse 1.5s ease-in-out infinite;
     }
-
     @keyframes pulse {
       0%, 100% {
         transform: scale(1);
@@ -58,12 +52,10 @@
         transform: scale(1.15);
       }
     }
-
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-
     .site-name {
       font-size: 26px;
       font-weight: 900;
@@ -73,7 +65,6 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     .video-container {
       position: absolute;
       top: 60px;
@@ -85,16 +76,13 @@
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
-
     .video-container.full-height {
       top: 0;
       height: 100vh;
     }
-
     .video-container::-webkit-scrollbar {
       display: none;
     }
-
     .video-wrapper {
       position: relative;
       width: 100%;
@@ -106,34 +94,30 @@
       justify-content: center;
       background: #000;
     }
-
     .video-wrapper.full-height {
       height: 100vh;
     }
-
     .video-player {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border: none;
     }
-
     .video-loader {
       position: absolute;
       top: 50%;
       left: 50%;
       width: 50px;
       height: 50px;
-      margin-left: -25px; /* -(width/2) */
-      margin-top: -25px;  /* -(height/2) */
+      margin-left: -25px;
+      margin-top: -25px;
       border: 5px solid rgba(255, 255, 255, 0.2);
-      border-top-color: #ff006e; /* Hot pink theme color */
+      border-top-color: #ff006e;
       border-radius: 50%;
       animation: spin 1s linear infinite;
-      z-index: 11; /* Above video info (10) */
-      display: none; /* Hidden by default */
+      z-index: 11;
+      display: none;
     }
-
     .video-placeholder {
       width: 100%;
       height: 100%;
@@ -149,7 +133,6 @@
       gap: 20px;
       position: relative;
     }
-
     .video-placeholder video {
       width: 100%;
       height: 100%;
@@ -159,25 +142,21 @@
       left: 0;
       z-index: 1;
     }
-
     .video-placeholder .title-overlay,
     .video-placeholder .tap-to-play {
       position: relative;
       z-index: 2;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
     }
-
     .tap-to-play {
       font-size: 18px;
       opacity: 0.8;
       animation: fadeIn 1s ease-in-out infinite alternate;
     }
-
     @keyframes fadeIn {
       from { opacity: 0.5; }
       to { opacity: 1; }
     }
-
     .video-info {
       position: absolute;
       bottom: 80px;
@@ -186,18 +165,15 @@
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
       z-index: 10;
     }
-
     .video-title {
       font-size: 20px;
       font-weight: 700;
       margin-bottom: 8px;
     }
-
     .video-description {
       font-size: 16px;
       color: #ffb3d9;
     }
-
     .side-actions {
       position: absolute;
       right: 15px;
@@ -207,7 +183,6 @@
       gap: 25px;
       z-index: 10;
     }
-
     .action-btn {
       background: rgba(0, 0, 0, 0.5);
       border: 2px solid rgba(255, 255, 255, 0.3);
@@ -222,25 +197,20 @@
       transition: all 0.3s ease;
       backdrop-filter: blur(10px);
     }
-
     .action-btn:active {
       transform: scale(0.9);
     }
-
     .action-icon {
       font-size: 28px;
     }
-
     .action-count {
       font-size: 12px;
       margin-top: 2px;
       font-weight: 600;
     }
-
     .like-btn.liked .action-icon {
       color: #ff0054;
     }
-
     .unmute-btn {
       position: absolute;
       top: 20px;
@@ -257,7 +227,6 @@
       justify-content: center;
       backdrop-filter: blur(5px);
     }
-
     .scroll-indicator {
       position: absolute;
       bottom: 20px;
@@ -268,12 +237,10 @@
       font-size: 14px;
       animation: bounce 2s ease-in-out infinite;
     }
-
     @keyframes bounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50% { transform: translateX(-50%) translateY(-10px); }
     }
-
     .ad-modal {
       position: fixed;
       top: 0;
@@ -286,7 +253,6 @@
       justify-content: center;
       z-index: 2000;
     }
-
     .ad-content {
       background: linear-gradient(135deg, #1a0033, #330033);
       padding: 20px;
@@ -302,7 +268,6 @@
       width: 90%;
       max-width: 350px;
     }
-
     .ad-image-link {
       display: block;
       margin-bottom: 15px;
@@ -310,18 +275,42 @@
       overflow: hidden;
       border: 2px solid #ff006e;
     }
-
     .ad-image {
       width: 100%;
       height: auto;
       display: block;
     }
-
     .ad-timer {
       font-size: 40px;
       font-weight: 900;
       color: #fff;
       margin: 10px 0;
+    }
+
+    /* ---------- NEW: STREAK COUNTER ---------- */
+    .streak-counter {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #ff006e;
+      font-weight: 900;
+      font-size: 24px;
+      padding: 6px 12px;
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
+      border: 2px solid rgba(255, 0, 110, 0.5);
+      z-index: 12;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+    .streak-counter .fire {
+      animation: pulse 1.5s infinite;
+    }
+    .streak-counter .count {
+      font-size: 28px;
     }
   </style>
 </head>
@@ -332,9 +321,7 @@
       <div class="site-name">SPICY REELS</div>
     </div>
   </div>
-
   <div class="video-container" id="videoContainer"></div>
-
   <div class="ad-modal" id="adModal">
     <div class="ad-content">
       <div>click here</div>
@@ -347,6 +334,7 @@
   </div>
 
   <script>
+    // ---------- VIDEO & AD DATA ----------
     let videos = [
       { title: "1", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/bridgette_n2dvzg.mp4" },
       { title: "2", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562608/alewx_hri3cd.mp4" },
@@ -398,28 +386,27 @@
       { title: "48", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_LUNA_STAR_a89fbu.mp4" },
       { title: "49", desc: "", url: "httpss://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_SAVANNA_xnieh9.mp4" },
       { title: "50", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_JOON_gv4glx.mp4" },
-     { title: "51", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_MONIQUE_vhbihn.mp4" },
-     { title: "52", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_NNB_xlunfp.mp4" },
-     { title: "53", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_JOEDI_joacgj.mp4" },
-     { title: "54", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ZANE_wlv4ts.mp4" },
-     { title: "55", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_NNN8_qnhuum.mp4" },
-     { title: "56", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_JUAN_v6xfox.mp4" },
-    { title: "57", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ROMI_67_es4k2p.mp4" },
-     { title: "58", desc: "", url: "httpshttps://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ALVUV_b5k3zt.mp4" },
-     { title: "59", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_NICOLETE_JHN_v6mxn3.mp4" },
-     { title: "60", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_IVY_ch7u6c.mp4" },
-     { title: "61", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_bbc4_dfumht.mp4" },
-     { title: "62", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_bbc5_saoxh5.mp4" },
-    { title: "62", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_markus_rmw4p5.mp4" },
-    { title: "63", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_rrm_mzy3ry.mp4" },
-  { title: "64", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_niccy45_xlcnfn.mp4" },
-    { title: "65", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_big_assy_lf18wy.mp4" },
-    { title: "66", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_cherki_htdhhs.mp4" },
-  { title: "67", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_markus_rmw4p5.mp4" },
-    { title: "68", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_jason_crzpcr.mp4" },
-    { title: "69", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_niccyote_rw8lij.mp4" },
+      { title: "51", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_MONIQUE_vhbihn.mp4" },
+      { title: "52", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_NNB_xlunfp.mp4" },
+      { title: "53", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_JOEDI_joacgj.mp4" },
+      { title: "54", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ZANE_wlv4ts.mp4" },
+      { title: "55", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_NNN8_qnhuum.mp4" },
+      { title: "56", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_JUAN_v6xfox.mp4" },
+      { title: "57", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ROMI_67_es4k2p.mp4" },
+      { title: "58", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ALVUV_b5k3zt.mp4" },
+      { title: "59", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_NICOLETE_JHN_v6mxn3.mp4" },
+      { title: "60", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_IVY_ch7u6c.mp4" },
+      { title: "61", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_bbc4_dfumht.mp4" },
+      { title: "62", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_bbc5_saoxh5.mp4" },
+      { title: "62", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_markus_rmw4p5.mp4" },
+      { title: "63", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_rrm_mzy3ry.mp4" },
+      { title: "64", desc: "", url: "httpss://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_niccy45_xlcnfn.mp4" },
+      { title: "65", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_big_assy_lf18wy.mp4" },
+      { title: "66", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_cherki_htdhhs.mp4" },
+      { title: "67", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_markus_rmw4p5.mp4" },
+      { title: "68", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_jason_crzpcr.mp4" },
+      { title: "69", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_niccyote_rw8lij.mp4" },
       {
-
         title: "<a href='https://onlyfans.com/riana_brooks' target='_blank' rel='noopener noreferrer'>onlyfans.com/riana_brooks</a>",
         desc: "This is only a teaser. Check me out",
         url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/Rainii_syqgpw.mp4",
@@ -428,7 +415,7 @@
       {
         title: "<a href='https://onlyfans.com/kaylee_moor' target='_blank' rel='noopener noreferrer'>onlyfans.com/kaylee_moor</a>",
         desc: "This is only a teaser. Check me out",
-        url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/onlykaylee_zheme9.mp4",
+        url: "httpss://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/onlykaylee_zheme9.mp4",
         type: "onlyfans"
       },
       {
@@ -444,31 +431,56 @@
         type: "onlyfans"
       },
       {
-        title: "<a href='httpss://onlyfans.com/evie_rouge' target='_blank' rel='noopener noreferrer'>onlyfans.com/evie_rouges</a>",
+        title: "<a href='https://onlyfans.com/evie_rouges' target='_blank' rel='noopener noreferrer'>onlyfans.com/evie_rouges</a>",
         desc: "This is only a teaser. Check me out",
         url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/onlyevie_rmguao.mp4",
         type: "onlyfans"
       }
     ];
-
     const ads = [
       {
         link: "https://ctwmsg.com/?siteId=cutiesai&pageName=home&prm[psid]=livingstone&prm[pstool]=650_2&prm[psprogram]=revs&prm[campaign_id]=&subAffId={SUBAFFID}",
-        imageSrc: "https://res.cloudinary.com/dxdhppkto/image/upload/v1761228425/Latinav1_zgo9k9.jpg"
+        imageSrc: "httpss://res.cloudinary.com/dxdhppkto/image/upload/v1761228425/Latinav1_zgo9k9.jpg"
       },
       {
         link: "https://ctwmsg.com/?siteId=jasmin&categoryName=&pageName=home&performerName=&prm[psid]=livingstone&prm[pstool]=205_1&prm[psprogram]=revs&prm[campaign_id]=&subAffId={SUBAFFID}",
-        imageSrc: "https://res.cloudinary.com/dxdhppkto/image/upload/v1761230376/livejasmin-logo-header-390x220_qkotbt.jpg"
+        imageSrc: "httpss://res.cloudinary.com/dxdhppkto/image/upload/v1761230376/livejasmin-logo-header-390x220_qkotbt.jpg"
       },
       {
-        link: "https://ctwmsg.com/?siteId=cutiesai&pageName=signup&prm[psid]=livingstone&prm[pstool]=650_2&prm[psprogram]=revs&prm[campaign_id]=&subAffId={SUBAFFID}r",
-        imageSrc: "httpss://res.cloudinary.com/dxdhppkto/image/upload/v1761231603/Solov1_rjgz2j.jpg"
+        link: "httpss://ctwmsg.com/?siteId=cutiesai&pageName=signup&prm[psid]=livingstone&prm[pstool]=650_2&prm[psprogram]=revs&prm[campaign_id]=&subAffId={SUBAFFID}r",
+        imageSrc: "https://res.cloudinary.com/dxdhppkto/image/upload/v1761231603/Solov1_rjgz2j.jpg"
       }
     ];
 
+    // ---------- STREAK LOGIC ----------
+    const STREAK_KEY = 'spicyReelsStreak';
+    const LAST_PLAYED_KEY = 'spicyReelsLastPlayed';
+    const THIRTY_PERCENT = 0.3;
+    const INACTIVITY_RESET_MS = 5 * 60 * 1000; // 5 minutes (optional)
+
+    let streak = parseInt(localStorage.getItem(STREAK_KEY) || '0', 10);
+    let lastPlayedTime = parseInt(localStorage.getItem(LAST_PLAYED_KEY) || '0', 10);
+    const now = Date.now();
+
+    if (now - lastPlayedTime > INACTIVITY_RESET_MS) {
+      streak = 0;
+      localStorage.setItem(STREAK_KEY, '0');
+    }
+
+    function updateStreakDisplay() {
+      document.querySelectorAll('.streak-counter .count').forEach(el => el.textContent = streak);
+    }
+
+    function incrementStreak() {
+      streak++;
+      localStorage.setItem(STREAK_KEY, streak.toString());
+      localStorage.setItem(LAST_PLAYED_KEY, Date.now().toString());
+      updateStreakDisplay();
+    }
+
+    // ---------- VIDEO ORDERING ----------
     let adCountdownInterval;
     let isHeaderPermanentlyHidden = false;
-
     function shuffle(array) {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -476,20 +488,13 @@
       }
       return array;
     }
-
-    // Separate numbered and OnlyFans reels
     let numberedReels = videos.slice(0, 69).map(video => ({ ...video, type: "numbered" }));
     let onlyFansReels = videos.slice(69).map(video => ({ ...video, type: "onlyfans" }));
-
-    // Shuffle both arrays independently
     numberedReels = shuffle(numberedReels);
     onlyFansReels = shuffle(onlyFansReels);
-
-    // Generate ordered videos: 4 numbered reels followed by 1 OnlyFans reel
     let orderedVideos = [];
     let numberedIndex = 0;
     let onlyFansIndex = 0;
-
     while (orderedVideos.length < videos.length) {
       for (let i = 0; i < 4 && numberedIndex < numberedReels.length; i++) {
         orderedVideos.push(numberedReels[numberedIndex]);
@@ -500,8 +505,6 @@
         onlyFansIndex = (onlyFansIndex + 1) % onlyFansReels.length;
       }
     }
-
-    // Assign IDs to videos
     orderedVideos.forEach(video => {
       video.id = video.url;
     });
@@ -516,25 +519,22 @@
     let scrollTimeout;
     let isGloballyMuted = true;
 
+    // ---------- RENDER ----------
     function renderVideos() {
       const container = document.getElementById("videoContainer");
       container.innerHTML = "";
-
       orderedVideos.forEach((video, index) => {
         const wrapper = document.createElement("div");
         wrapper.className = "video-wrapper";
         wrapper.dataset.id = video.id;
         wrapper.dataset.index = index;
         wrapper.dataset.url = video.url;
-
-        // Use video with poster for first frame if header is hidden, else text-only
         const placeholderContent = isHeaderPermanentlyHidden
           ? `<video src="${video.url}" poster="${video.url}" preload="metadata" muted></video>
-                   <div class="title-overlay">${video.title}</div>
-                   <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>`
+                      <div class="title-overlay">${video.title}</div>
+                      <div class="tap-to-play">Explicit content(18+) Tap to play</div>`
           : `<div class="title-overlay">${video.title}</div>
-                   <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>`;
-
+                      <div class="tap-to-play">Explicit content(18+) Tap to play</div>`;
         wrapper.innerHTML = `
           <div class="video-loader"></div>
           <div class="video-placeholder">
@@ -545,16 +545,17 @@
             <div class="video-title">${video.title}</div>
             <div class="video-description">${video.desc}</div>
           </div>
-          ${index === 0 ? '<div class="scroll-indicator">↓ Scroll for more</div>' : ''}
+          ${index === 0 ? '<div class="scroll-indicator">Scroll for more 👇</div>' : ''}
+          <div class="streak-counter"><span class="fire">🔥</span><span class="count">${streak}</span></div>
         `;
-
         container.appendChild(wrapper);
       });
-
       setupInteractions();
       setupScrollDetection();
+      updateStreakDisplay();
     }
 
+    // ---------- INTERACTIONS ----------
     function setupInteractions() {
       document.querySelectorAll('.video-wrapper').forEach(wrapper => {
         wrapper.addEventListener('click', (e) => {
@@ -562,7 +563,6 @@
             hasStarted = true;
             loadVideo(wrapper);
             wrapper.querySelector('.scroll-indicator')?.remove();
-            // Hide header permanently and rerender with first-frame placeholders if first video
             if (parseInt(wrapper.dataset.index) === 0 && !isHeaderPermanentlyHidden) {
               const header = document.getElementById('header');
               header.classList.add('hidden');
@@ -570,33 +570,11 @@
               videoContainer.classList.add('full-height');
               document.querySelectorAll('.video-wrapper').forEach(w => w.classList.add('full-height'));
               isHeaderPermanentlyHidden = true;
-              renderVideos(); // Rerender to show first-frame placeholders
+              renderVideos();
             }
           }
         });
       });
-
-      document.querySelectorAll('.like-btn').forEach(btn => {
-        const id = btn.dataset.id;
-        if (userLiked.has(id)) {
-          btn.classList.add('liked');
-        }
-
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          if (userLiked.has(id)) {
-            userLiked.delete(id);
-            likes[id] = Math.max(0, (likes[id] || 0) - 1);
-            btn.classList.remove('liked');
-          } else {
-            userLiked.add(id);
-            likes[id] = (likes[id] || 0) + 1;
-            btn.classList.add('liked');
-          }
-          btn.querySelector('.action-count').textContent = likes[id];
-        });
-      });
-
       document.querySelectorAll('.unmute-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -606,6 +584,7 @@
           if (currentVideoEl) {
             currentVideoEl.muted = isGloballyMuted;
           }
+          // FIX 5: Changed text to toggle between '🔇' and '🔊'
           document.querySelectorAll('.unmute-btn').forEach(icon => {
             icon.textContent = isGloballyMuted ? '🔇' : '🔊';
           });
@@ -625,14 +604,11 @@
       });
     }
 
-    /* --- THIS IS THE UPDATED, CORRECTED FUNCTION --- */
     function handleScrollEnd() {
       const container = document.getElementById('videoContainer');
       const wrappers = document.querySelectorAll('.video-wrapper');
-
       let closestWrapper = null;
       let minDistance = Infinity;
-
       wrappers.forEach(wrapper => {
         const rect = wrapper.getBoundingClientRect();
         const distance = Math.abs(rect.top - (container.classList.contains('full-height') ? 0 : 60));
@@ -641,50 +617,31 @@
           closestWrapper = wrapper;
         }
       });
-
       if (closestWrapper) {
         const newIndex = parseInt(closestWrapper.dataset.index);
-
         if (newIndex !== currentIndex) {
-          // We are moving to a new video
           const prevWrapper = wrappers[currentIndex];
-
           if (prevWrapper && isLoaded(prevWrapper)) {
-            // The video we are leaving was playing
             const id = prevWrapper.dataset.id;
-            
-            // Unload it (this also pauses it)
-            unloadVideo(prevWrapper); 
-            
+            unloadVideo(prevWrapper);
             if (!playedSet.has(id)) {
               playedSet.add(id);
               if (playedSet.size > 0 && playedSet.size % 3 === 0) {
-                // Ad Trigger!
-                
-                // IMPORTANT: Update index *before* showing ad
-                currentIndex = newIndex; 
-                
+                currentIndex = newIndex;
                 const adTriggerCount = playedSet.size / 3;
                 const adIndexToShow = (adTriggerCount - 1) % ads.length;
                 showAd(adIndexToShow);
-                return; // Stop here. hideAd() will load the new video.
+                return;
               }
             }
           }
-
-          // --- This is the key ---
-          // Always update the current index *after* checking the previous one.
           currentIndex = newIndex;
-
-          // Load the new video *only if* an ad wasn't just triggered
           if (hasStarted && !adShowing && !isLoaded(closestWrapper)) {
             loadVideo(closestWrapper);
           }
         }
       }
     }
-    /* --- END UPDATED FUNCTION --- */
-
 
     function isLoaded(wrapper) {
       return !!wrapper.querySelector('video.video-player');
@@ -693,13 +650,10 @@
     function loadVideo(wrapper) {
       const url = wrapper.dataset.url;
       if (!url) return;
-
       const loader = wrapper.querySelector('.video-loader');
       const placeholder = wrapper.querySelector('.video-placeholder');
-
-      if (loader) loader.style.display = 'block'; // Show loader
-      if (placeholder) placeholder.remove(); // Remove placeholder
-
+      if (loader) loader.style.display = 'block';
+      if (placeholder) placeholder.remove();
       const videoEl = document.createElement('video');
       videoEl.src = url;
       videoEl.className = 'video-player';
@@ -707,33 +661,42 @@
       videoEl.muted = isGloballyMuted;
       videoEl.loop = true;
       videoEl.playsInline = true;
-
       videoEl.addEventListener('waiting', () => {
         if (loader) loader.style.display = 'block';
       });
-
       videoEl.addEventListener('playing', () => {
         if (loader) loader.style.display = 'none';
       });
 
-      wrapper.insertBefore(videoEl, wrapper.querySelector('.video-info'));
+      // STREAK: 30% detection
+      let counted = false;
+      const checkThirty = () => {
+        if (!counted && videoEl.duration && videoEl.currentTime >= videoEl.duration * THIRTY_PERCENT) {
+          counted = true;
+          incrementStreak();
+        }
+      };
+      videoEl.addEventListener('timeupdate', checkThirty);
+      videoEl.addEventListener('ended', () => {
+        if (!counted) incrementStreak();
+      });
 
+      wrapper.insertBefore(videoEl, wrapper.querySelector('.video-info'));
       const unmuteBtn = wrapper.querySelector('.unmute-btn');
       if (unmuteBtn) {
+        // FIX 6: Changed text to '🔇' or '🔊' when loading a new video
         unmuteBtn.textContent = isGloballyMuted ? '🔇' : '🔊';
       }
-
       videoEl.play().catch(error => {
         console.error("Video playback failed:", error);
-        if (loader) loader.style.display = 'none'; 
+        if (loader) loader.style.display = 'none';
       });
     }
-
 
     function unloadVideo(wrapper) {
       const videoEl = wrapper.querySelector('video.video-player');
       if (videoEl) {
-        videoEl.pause(); // <-- This is where the video is stopped
+        videoEl.pause();
         videoEl.removeAttribute('src');
         videoEl.load();
         videoEl.remove();
@@ -744,10 +707,10 @@
         placeholder.className = 'video-placeholder';
         const placeholderContent = isHeaderPermanentlyHidden
           ? `<video src="${video.url}" poster="${video.url}" preload="metadata" muted></video>
-                   <div class="title-overlay">${video.title}</div>
-                   <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>`
+                      <div class="title-overlay">${video.title}</div>
+                      <div class="tap-to-play">Explicit content(18+) Tap to play</div>`
           : `<div class="title-overlay">${video.title}</div>
-                   <div class="tap-to-play">👆 Explicit content(18+) Tap to play</div>`;
+                      <div class="tap-to-play">Explicit content(18+) Tap to play</div>`;
         placeholder.innerHTML = placeholderContent;
         wrapper.insertBefore(placeholder, wrapper.querySelector('.video-info'));
       }
@@ -760,28 +723,22 @@
     }
 
     function showAd(adIndex) {
-      pauseAllVideos(); // Safety net: pause any videos that might be playing
+      pauseAllVideos();
       adShowing = true;
       const adToShow = ads[adIndex];
-
       const adModal = document.getElementById('adModal');
       const adLink = document.getElementById('adLink');
       const adImage = document.getElementById('adImage');
       const timerEl = document.getElementById('adTimer');
       const header = document.getElementById('header');
-
       if (isHeaderPermanentlyHidden) {
         header.classList.remove('hidden');
       }
-
       adLink.href = adToShow.link;
       adImage.src = adToShow.imageSrc;
-
       adModal.style.display = 'flex';
-
       let timeLeft = 10;
       timerEl.textContent = timeLeft;
-
       adCountdownInterval = setInterval(() => {
         timeLeft--;
         timerEl.textContent = timeLeft;
@@ -793,19 +750,15 @@
 
     function hideAd() {
       clearInterval(adCountdownInterval);
-
       adShowing = false;
       const adModal = document.getElementById('adModal');
       adModal.style.display = 'none';
-
       const header = document.getElementById('header');
       if (isHeaderPermanentlyHidden) {
         header.classList.add('hidden');
       }
-
       const wrappers = document.querySelectorAll('.video-wrapper');
-      // This works now because currentIndex was correctly updated *before* the ad
-      const currentWrapper = wrappers[currentIndex]; 
+      const currentWrapper = wrappers[currentIndex];
       if (currentWrapper && !isLoaded(currentWrapper)) {
         loadVideo(currentWrapper);
       }
