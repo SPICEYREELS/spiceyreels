@@ -406,6 +406,20 @@
       { title: "67", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_markus_rmw4p5.mp4" },
       { title: "68", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_jason_crzpcr.mp4" },
       { title: "69", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_niccyote_rw8lij.mp4" },
+        { title: "70", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_PURE_lf0ofh.mp4" },
+        { title: "71", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_LISA_N_s1ngws.mp4" },
+       { title: "72", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_CJ_om0pxu.mp4" },
+       { title: "73", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_BNM_bnokve.mp4" },
+        { title: "74", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_ARABIC_gjtlpl.mp4" },
+        { title: "75", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_REAGAX_mts4jz.mp4" },
+       { title: "76", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_LUNAMORRIS_tbrgnc.mp4" },
+        { title: "77", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_STRIPP_xza7vk.mp4" },
+   { title: "78", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_RACHEAMANUEL_qovt9f.mp4" },
+        { title: "79", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_SARAJOHN_krjzta.mp4" },
+        { title: "80", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_STYR_m60rnt.mp4" },
+      
+
+
       {
         title: "<a href='https://onlyfans.com/riana_brooks' target='_blank' rel='noopener noreferrer'>onlyfans.com/riana_brooks</a>",
         desc: "This is only a teaser. Check me out",
@@ -488,8 +502,8 @@
       }
       return array;
     }
-    let numberedReels = videos.slice(0, 69).map(video => ({ ...video, type: "numbered" }));
-    let onlyFansReels = videos.slice(69).map(video => ({ ...video, type: "onlyfans" }));
+    let numberedReels = videos.slice(0, 80).map(video => ({ ...video, type: "numbered" }));
+    let onlyFansReels = videos.slice(80).map(video => ({ ...video, type: "onlyfans" }));
     numberedReels = shuffle(numberedReels);
     onlyFansReels = shuffle(onlyFansReels);
     let orderedVideos = [];
@@ -546,7 +560,7 @@
             <div class="video-description">${video.desc}</div>
           </div>
           ${index === 0 ? '<div class="scroll-indicator">Scroll for more 👇</div>' : ''}
-          <div class="streak-counter"><span class="fire">🔥</span><span class="count">${streak}</span></div>
+          <div class="streak-counter"><span class="fire">👁️</span><span class="count">${streak}</span></div>
         `;
         container.appendChild(wrapper);
       });
@@ -768,5 +782,6 @@
   </script>
 </body>
 </html>
+
 
 
