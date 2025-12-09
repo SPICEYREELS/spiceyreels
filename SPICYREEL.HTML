@@ -417,6 +417,11 @@
    { title: "78", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_RACHEAMANUEL_qovt9f.mp4" },
         { title: "79", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_SARAJOHN_krjzta.mp4" },
         { title: "80", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_STYR_m60rnt.mp4" },
+       { title: "81", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_emmy_euk8me.mp4" },
+       { title: "82", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_jasonred_e1o9bo.mp4" },
+       { title: "83", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_luvemm_ztw0ky.mp4" },
+        { title: "84", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_never_uznvtm.mp4" },
+       { title: "85", desc: "", url: "https://res.cloudinary.com/dxdhppkto/video/upload/v1760562606/avc_yoggy_edhs53.mp4" },
       
 
 
@@ -515,8 +520,8 @@
       }
       return array;
     }
-    let numberedReels = videos.slice(0, 80).map(video => ({ ...video, type: "numbered" }));
-    let onlyFansReels = videos.slice(80).map(video => ({ ...video, type: "onlyfans" }));
+    let numberedReels = videos.slice(0, 85).map(video => ({ ...video, type: "numbered" }));
+    let onlyFansReels = videos.slice(85).map(video => ({ ...video, type: "onlyfans" }));
     numberedReels = shuffle(numberedReels);
     onlyFansReels = shuffle(onlyFansReels);
     let orderedVideos = [];
@@ -795,6 +800,7 @@
   </script>
 </body>
 </html>
+
 
 
 
