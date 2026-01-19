@@ -606,12 +606,22 @@
         wrapper.dataset.id = video.id;
         wrapper.dataset.index = index;
         wrapper.dataset.url = video.url;
-        const placeholderContent = isHeaderPermanentlyHidden
+       const placeholderContent = isHeaderPermanentlyHidden
           ? `<video src="${video.url}" poster="${video.url}" preload="metadata" muted></video>
-                      <div class="title-overlay">${video.title}</div>
-                      <div class="tap-to-play">▶️(18+)Donate yerrysreview@gmail.com on paypal to keep the site running</div>`
+             <div class="title-overlay">${video.title}</div>
+             <div class="tap-to-play" style="line-height: 2;">
+                ▶️(18+) 
+                <style>@keyframes popDonate { 0% { transform: scale(1); } 100% { transform: scale(1.1); box-shadow: 0 0 12px #ff006e; } }</style>
+                <a href="https://www.paypal.com/ncp/payment/GY5F5A2B47VS8" target="_blank" onclick="event.stopPropagation()" style="display: inline-block; background: linear-gradient(45deg, #ff006e, #8b00ff); color: white; padding: 4px 10px; border-radius: 8px; text-decoration: none; font-weight: 900; border: 1px solid rgba(255,255,255,0.8); animation: popDonate 0.8s infinite alternate; margin: 0 5px;">DONATE</a> 
+                to keep the site running
+             </div>`
           : `<div class="title-overlay">${video.title}</div>
-                      <div class="tap-to-play">▶️(18+) Donate to yerrysreview@gmail.com on paypal to keep the site running</div>`;
+             <div class="tap-to-play" style="line-height: 2;">
+                ▶️(18+) 
+                <style>@keyframes popDonate { 0% { transform: scale(1); } 100% { transform: scale(1.1); box-shadow: 0 0 12px #ff006e; } }</style>
+                <a href="https://www.paypal.com/ncp/payment/GY5F5A2B47VS8" target="_blank" onclick="event.stopPropagation()" style="display: inline-block; background: linear-gradient(45deg, #ff006e, #8b00ff); color: white; padding: 4px 10px; border-radius: 8px; text-decoration: none; font-weight: 900; border: 1px solid rgba(255,255,255,0.8); animation: popDonate 0.8s infinite alternate; margin: 0 5px;">DONATE</a> 
+                to keep the site running
+             </div>`;
         wrapper.innerHTML = `
           <div class="video-loader"></div>
           <div class="video-placeholder">
@@ -845,6 +855,7 @@
   </script>
 </body>
 </html>
+
 
 
 
